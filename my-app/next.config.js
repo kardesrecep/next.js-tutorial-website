@@ -3,9 +3,28 @@ const nextConfig = {
     images:{
         domains:[
             "images.pexels.com",
-            "images.unsplash.com"
+            
         ]
     }
 }
 
 module.exports = nextConfig
+
+
+/* 
+yeni version
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's3.amazonaws.com',
+        port: '',
+        pathname: '/my-bucket/**',
+      },
+    ],
+  },
+}
+
+
+*/
