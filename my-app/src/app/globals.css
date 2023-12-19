@@ -12,18 +12,29 @@ body {
   background: #111;
 }
 
-
-
 a {
   color: inherit;
   text-decoration: none;
 }
-.container{
-max-width: 1366px;
-min-height:100vh ;
-margin: 0 auto;
-padding: 0 60px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+.theme{
+  transition:1s all ease-in-out;
+}
+
+.light {
+  background-color: #dfdbdb;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #dfdbdb;
+}
+.container {
+  max-width: 1366px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
