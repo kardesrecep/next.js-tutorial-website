@@ -2,23 +2,23 @@ import React from 'react'
 import styles from "./page.module.css"
 import Link from "next/link"
 import Image from "next/image"
+import {notFound} from "next/navigation"
 
-const getData = async () => { 
-const res=await fetch("https://jsonplaceholder.typicode.com/posts",{
+const getData = async ({id}) => { 
+const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
   cache:"no-store"
 })
 
 if(!res.ok){
-  throw new Error("Failed  to fetch data")
-
+  return notFound()
 }
 return res.json()
 
 
  }
 
-const BlogPost = async ({ params }) => {
- const data=await getData()
+ const BlogPost = async ({ params }) => {
+  const data = await getData(params.id);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -29,7 +29,7 @@ const BlogPost = async ({ params }) => {
           </p>
           <div className={styles.author}>
             <Image
-              src="https://images.pexels.com/photos/5467937/pexels-photo-5467937.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              src={data.img}
               alt=""
               width={40}
               height={40}
@@ -40,8 +40,8 @@ const BlogPost = async ({ params }) => {
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src="https://images.pexels.com/photos/18114403/pexels-photo-18114403/free-photo-of-white-egret-standing-in-water.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            alt="leylek"
+            src={data.img}
+            alt=""
             fill={true}
             className={styles.image}
           />
